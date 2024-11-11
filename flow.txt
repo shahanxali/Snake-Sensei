@@ -1,0 +1,34 @@
+                   ┌──────────────────────────┐
+                   │ Initialize tensors from  │
+                   │ state, action, reward,   │
+                   │ next_state, and done     │
+                   └────────────┬─────────────┘
+                                │
+                                ▼
+                    ┌──────────────────────┐
+                    │ Predict Q-values     │
+                    │ for current state    │
+                    └────────────┬─────────┘
+                                 │
+                                 ▼
+                    ┌──────────────────────┐
+                    │ For each experience: │
+                    │  if done:            │
+                    │    Q_new = reward    │
+                    │  else:               │
+                    │    Q_new = reward +  │
+                    │      gamma * max(Q)  │
+                    │ Update target Q      │
+                    └────────────┬─────────┘
+                                 │
+                                 ▼
+                    ┌──────────────────────┐
+                    │ Calculate loss       │
+                    │ (MSE: target vs pred)│
+                    └────────────┬─────────┘
+                                 │
+                                 ▼
+                    ┌──────────────────────┐
+                    │ Backpropagate and    │
+                    │ update model weights │
+                    └──────────────────────┘
